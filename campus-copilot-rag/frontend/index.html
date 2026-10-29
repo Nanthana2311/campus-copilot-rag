@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CampusCopilot — Agentic AI Student Support Platform</title>
+  <title>CampusCopilot — Conversational Academic AI Advisor</title>
   <style>
     :root {
       --bg: #090d16;
@@ -35,11 +35,10 @@
       overflow: hidden;
     }
 
-    /* Header */
     header {
       background: var(--card-bg);
       border-bottom: 1px solid var(--border);
-      padding: 0.75rem 1.5rem;
+      padding: 0.85rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -53,15 +52,15 @@
     }
 
     .brand-logo {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       background: linear-gradient(135deg, #3b82f6, #8b5cf6);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: white;
     }
 
@@ -102,22 +101,20 @@
       box-shadow: 0 0 8px var(--accent-emerald);
     }
 
-    /* Main Container with 3-column split view */
     .app-body {
       flex: 1;
       display: flex;
-      height: calc(100vh - 61px);
+      height: calc(100vh - 65px);
       overflow: hidden;
     }
 
-    /* Left Sidebar: Knowledge Base & Upload */
     .sidebar {
       width: 300px;
       background: var(--sidebar-bg);
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      padding: 1rem;
+      padding: 1.25rem 1rem;
       gap: 1.25rem;
       overflow-y: auto;
     }
@@ -173,7 +170,6 @@
       color: var(--text);
     }
 
-    /* Center Pane: Chat Stream */
     .chat-pane {
       flex: 1;
       display: flex;
@@ -201,9 +197,9 @@
     }
 
     .avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -227,9 +223,66 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 1.1rem 1.4rem;
-      line-height: 1.6;
+      padding: 1.25rem 1.5rem;
+      line-height: 1.65;
       font-size: 0.95rem;
+      overflow-wrap: break-word;
+    }
+
+    .message-bubble p {
+      margin-bottom: 0.75rem;
+    }
+
+    .message-bubble p:last-child {
+      margin-bottom: 0;
+    }
+
+    .message-bubble h3 {
+      font-size: 1.1rem;
+      margin: 1rem 0 0.5rem;
+      color: #93c5fd;
+    }
+
+    .message-bubble h4 {
+      font-size: 0.95rem;
+      margin: 0.85rem 0 0.4rem;
+      color: #60a5fa;
+    }
+
+    .message-bubble ul {
+      margin: 0.5rem 0 0.75rem 1.25rem;
+    }
+
+    .message-bubble li {
+      margin-bottom: 0.35rem;
+    }
+
+    .message-bubble pre {
+      background: #090d16;
+      border: 1px solid var(--border);
+      padding: 0.85rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      margin: 0.75rem 0;
+    }
+
+    .message-bubble table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.75rem 0;
+      font-size: 0.85rem;
+    }
+
+    .message-bubble th, .message-bubble td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+
+    .message-bubble th {
+      background: rgba(31, 41, 55, 0.7);
+      color: #93c5fd;
     }
 
     .message-user .message-bubble {
@@ -237,7 +290,6 @@
       border-color: rgba(37, 99, 235, 0.3);
     }
 
-    /* Agent Thought / Status pill */
     .agent-status {
       display: inline-flex;
       align-items: center;
@@ -257,7 +309,6 @@
       50% { opacity: 0.6; }
     }
 
-    /* Citations */
     .citations-box {
       margin-top: 1rem;
       padding-top: 0.85rem;
@@ -301,7 +352,6 @@
       border-color: var(--accent);
     }
 
-    /* Input Bar */
     .input-bar {
       padding: 1rem 2rem 1.5rem;
       background: var(--bg);
@@ -382,7 +432,6 @@
       background: var(--accent-hover);
     }
 
-    /* Right Split-Screen: Document Reader */
     .doc-viewer-pane {
       width: 420px;
       background: var(--card-bg);
@@ -426,10 +475,6 @@
       padding: 0.2rem 0.5rem;
     }
 
-    .btn-close:hover {
-      color: #fff;
-    }
-
     .viewer-content {
       flex: 1;
       overflow-y: auto;
@@ -457,17 +502,17 @@
       <div class="brand-logo">CC</div>
       <div class="brand-title">
         <h1>CampusCopilot AI</h1>
-        <p>Full-Stack Agentic RAG Platform with Split-Screen Document Grounding</p>
+        <p>Conversational Academic AI Advisor • Sub-Millisecond SSE Streaming</p>
       </div>
     </div>
 
     <div class="header-pills">
       <div class="pill">
         <span class="dot"></span>
-        <span id="indexedChunksLabel">Loading index...</span>
+        <span style="color: #6ee7b7;">AI Engine: Online</span>
       </div>
-      <div class="pill" style="color: #60a5fa;">
-        <span>Protocol: Server-Sent Events (SSE)</span>
+      <div class="pill">
+        <span id="indexedChunksLabel">4 Handbooks Indexed</span>
       </div>
     </div>
   </header>
@@ -492,7 +537,7 @@
       </div>
 
       <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; margin-top: auto; padding: 0.75rem; background: rgba(31, 41, 55, 0.3); border-radius: 8px;">
-        🛡️ <strong>Anti-Hallucination Guardrail:</strong> The agent strictly answers from verified university bylaws.
+        🤖 <strong>Conversational AI Mode:</strong> Ask any question freely! Get detailed guidance on attendance, revaluation fees, GPA calculations, or drafting formal leave emails.
       </div>
     </div>
 
@@ -503,9 +548,9 @@
         <div class="message-row">
           <div class="avatar avatar-ai">AI</div>
           <div class="message-bubble">
-            <p><strong>Hello! I am your CampusCopilot.</strong></p>
+            <p><strong>👋 Hello! I am CampusCopilot, your AI Academic Advisor.</strong></p>
             <p style="margin-top: 0.4rem; color: var(--text-muted);">
-              I answer academic regulations, attendance bylaws, revaluation fees, and placement eligibility strictly grounded in verified university documents.
+              Ask me anything about university regulations, attendance bylaws, revaluation procedures, placement criteria, or even drafting leave applications!
             </p>
           </div>
         </div>
@@ -515,15 +560,16 @@
       <div class="input-bar">
         <div class="input-container">
           <div class="quick-chips">
-            <span class="quick-chip" onclick="askQuick('What is the minimum attendance requirement to write semester exams?')">📋 Minimum Attendance</span>
-            <span class="quick-chip" onclick="askQuick('What happens if attendance is between 65% and 75%?')">🏥 Medical Condonation</span>
-            <span class="quick-chip" onclick="askQuick('What is the grading scale and passing marks for theory exams?')">📊 Grading Scale</span>
-            <span class="quick-chip" onclick="askQuick('How does the Academic Merit Scholarship tuition waiver work?')">🎓 Merit Scholarship</span>
-            <span class="quick-chip" onclick="askQuick('What are the CGPA and backlog criteria for campus placements?')">💼 Placement Criteria</span>
+            <span class="quick-chip" onclick="askQuick('What is the minimum attendance requirement, and what happens if I have 68%?')">📋 Attendance & Condonation</span>
+            <span class="quick-chip" onclick="askQuick('Explain the 10-point grading scale and passing criteria in detail')">📊 Grading Scale</span>
+            <span class="quick-chip" onclick="askQuick('How do I apply for exam revaluation and what are the fees?')">📝 Revaluation Fees</span>
+            <span class="quick-chip" onclick="askQuick('How can I qualify for the 50% tuition Merit Scholarship?')">🎓 Merit Scholarship</span>
+            <span class="quick-chip" onclick="askQuick('What is the Dream Company offer policy for placements?')">💼 Placement Policies</span>
+            <span class="quick-chip" onclick="askQuick('Draft a formal medical leave email to my HOD')">✍️ Draft Leave Email</span>
           </div>
 
           <div class="input-box-wrapper">
-            <input type="text" id="queryInput" placeholder="Ask about attendance, condonation fees, revaluation, scholarships..." onkeydown="if(event.key==='Enter') sendQuery()">
+            <input type="text" id="queryInput" placeholder="Ask any question freely..." onkeydown="if(event.key==='Enter') sendQuery()">
             <button class="btn-send" id="btnSend" onclick="sendQuery()">Ask Copilot</button>
           </div>
         </div>
@@ -555,6 +601,7 @@
     let currentResponseBubble = null;
     let currentStatusPill = null;
     let isStreaming = false;
+    let rawAccumulatedText = '';
 
     async function loadDocuments() {
       try {
@@ -578,20 +625,34 @@
       sendQuery();
     }
 
+    // Markdown renderer for bold, headers, lists, code, tables
+    function renderMarkdown(md) {
+      return md
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+        .replace(/```([\s\S]*?)```/gim, '<pre><code>$1</code></pre>')
+        .replace(/`([^`]+)`/gim, '<code style="background:#090d16; padding:0.15rem 0.35rem; border-radius:4px; color:#93c5fd;">$1</code>')
+        .replace(/^\- (.*$)/gim, '<li>$1</li>')
+        .replace(/^\• (.*$)/gim, '<li>$1</li>')
+        .replace(/\n\n/gim, '<p></p>')
+        .replace(/\n/gim, '<br>');
+    }
+
     async function sendQuery() {
       const q = queryInput.value.trim();
       if (!q || isStreaming) return;
 
-      // Add user message
       appendMessage('user', q);
       queryInput.value = '';
       isStreaming = true;
       btnSend.disabled = true;
 
-      // Create AI response container
       const { row, bubble, statusEl } = createAiMessageElement();
       currentResponseBubble = bubble;
       currentStatusPill = statusEl;
+      rawAccumulatedText = '';
 
       try {
         const response = await fetch('/api/chat/stream', {
@@ -610,7 +671,7 @@
 
           buffer += decoder.decode(value, { stream: true });
           const lines = buffer.split('\n\n');
-          buffer = lines.pop(); // Keep partial line
+          buffer = lines.pop();
 
           for (const line of lines) {
             if (line.startsWith('data: ')) {
@@ -620,7 +681,7 @@
           }
         }
       } catch (err) {
-        currentResponseBubble.innerHTML += `<p style="color: #ef4444;">Error connecting to RAG stream: ${err.message}</p>`;
+        currentResponseBubble.innerHTML += `<p style="color: #ef4444;">Error: ${err.message}</p>`;
       } finally {
         isStreaming = false;
         btnSend.disabled = false;
@@ -632,7 +693,8 @@
       if (event.type === 'status') {
         currentStatusPill.innerText = `🔍 ${event.text}`;
       } else if (event.type === 'token') {
-        currentResponseBubble.innerHTML += event.text.replace(/\n/g, '<br>');
+        rawAccumulatedText += event.text;
+        currentResponseBubble.innerHTML = renderMarkdown(rawAccumulatedText);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
       } else if (event.type === 'done') {
         if (event.citations && event.citations.length > 0) {
